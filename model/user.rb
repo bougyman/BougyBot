@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'bcrypt'
 # Bot Namespace
 module BougyBot
@@ -76,6 +77,8 @@ module BougyBot
     end
 
     def authenticate(pass)
+      self[:last] = Time.now
+      save
       password == pass
     end
   end
